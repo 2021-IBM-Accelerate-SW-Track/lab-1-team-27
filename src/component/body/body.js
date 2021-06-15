@@ -15,16 +15,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BasicTextFields() {
   const classes = useStyles();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState([]);
+  const addItem = (i) => { 
+    setValue( [...value, {
+      id: value.length,
+      val: value
+    }])
+    console.log(value);
+  }
   const handleSubmit = (i) => { 
    i.preventDefault()
-   let count = 0;
-   if(value != ""){ //I think this is where you can validate duplicate entries 
+   if(value !== ""){ //I think this is where you can validate duplicate entries 
      console.log(value)
    }
  }
   return (
-    <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <form className={classes.root} noValidate autoComplete="off" onSubmit={addItem}>
       <TextField 
       value = {value}
       id="outlined-basic"
@@ -34,7 +40,7 @@ export default function BasicTextFields() {
       multiline
       rowsMax={2}/>
   <Button
-    type="submit"
+    type = "submit"
     variant="outlined"
     size = "large"
     >Add Item</Button>
