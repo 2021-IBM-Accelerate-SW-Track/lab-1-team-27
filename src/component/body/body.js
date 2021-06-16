@@ -15,11 +15,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BasicTextFields() {
-  
-  const[myList, setMyList] = useState([""]); //trying out the map function
+
+  const[myList, setMyList] = useState([]); //trying out the map function
+
   const listItems = myList.map((item)=> 
-  <li>{item}</li>
+  <li>{item} <button type="button" onClick={handleDelete(item)}>Delete</button></li>
   );
+  function handleDelete(item) {
+    const newList =  myList.filter(value => value != item);
+    console.log(newList); 
+  }
 
   const divStyle = {color: 'blue', font: 'Courier New'};  
   const classes = useStyles();
@@ -28,9 +33,7 @@ export default function BasicTextFields() {
 
   const handleSubmit = (i) => { 
    i.preventDefault()
-   if(value){ //I think this is where you can validate duplicate entries 
-        console.log(myList)
-       
+   if(value !== ""){ //I think this is where you can validate duplicate entries 
         setMyList(myList.concat([value]));
     }
    
