@@ -11,39 +11,50 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  
 }));
 
 export default function BasicTextFields() {
+  
+  const[myList, setMyList] = useState([""]); //trying out the map function
+  const listItems = myList.map((item)=> 
+  <li>{item}</li>
+  );
+
+  const divStyle = {color: 'blue', font: 'Courier New'};  
   const classes = useStyles();
-  const [value, setValue] = useState([]);
-  const addItem = (i) => { 
-    setValue( [...value, {
-      id: value.length,
-      val: value
-    }])
-    console.log(value);
-  }
+  const [value, setValue] = useState("");
+
+
   const handleSubmit = (i) => { 
    i.preventDefault()
-   if(value !== ""){ //I think this is where you can validate duplicate entries 
-     console.log(value)
-   }
+   if(value){ //I think this is where you can validate duplicate entries 
+        console.log(myList)
+       
+        setMyList(myList.concat([value]));
+    }
+   
+   
  }
   return (
-    <form className={classes.root} noValidate autoComplete="off" onSubmit={addItem}>
-      <TextField 
+    <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+     <TextField 
       value = {value}
       id="outlined-basic"
       label="Add To-do Item"
       variant="outlined"
       onChange={(i) => setValue(i.target.value)}
       multiline
-      rowsMax={2}/>
-  <Button
-    type = "submit"
-    variant="outlined"
-    size = "large"
-    >Add Item</Button>
+     rowsMax={2}/>
+
+      
+      <Button
+        type="submit"
+        variant="outlined"
+        size = "large"
+        >Add Item</Button>
+
+      <div style = {divStyle}>{listItems}</div>  
     </form>
   );
 }
