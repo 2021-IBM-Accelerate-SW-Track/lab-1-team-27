@@ -19,22 +19,24 @@ export default function BasicTextFields() {
   const[myList, setMyList] = useState([]); //trying out the map function
 
   const listItems = myList.map((item)=> 
-  <li>{item} <button type="button" onClick={handleDelete(item)}>Delete</button></li>
+  <li>{item} <button type="button" onClick={handleDelete(item)}>Delete Item</button></li>
   );
   function handleDelete(item) {
-    const newList =  myList.filter(value => value != item);
-    console.log(newList); 
+    console.log("abc");
+    //const newList =  myList.filter(val => val !== item);
+   // setMyList(newList) 
   }
 
-  const divStyle = {color: 'blue', font: 'Courier New'};  
+  const divStyle = {color: 'blue', font: 'Courier New', textalign: 'left'};  
   const classes = useStyles();
   const [value, setValue] = useState("");
 
 
   const handleSubmit = (i) => { 
    i.preventDefault()
-   if(value !== ""){ //I think this is where you can validate duplicate entries 
+   if(value){ //I think this is where you can validate duplicate entries 
         setMyList(myList.concat([value]));
+        console.log("123");
     }
    
    
