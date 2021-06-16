@@ -28,9 +28,8 @@ export default function BasicTextFields() {
 
   const handleSubmit = (i) => { 
    i.preventDefault()
-   let count = 0;
    if(value){ //I think this is where you can validate duplicate entries 
-        console.log(value)
+        console.log(myList)
        
         setMyList(myList.concat([value]));
     }
