@@ -53,13 +53,12 @@ export default function BasicTextFields() {
   const[myList, setMyList] = useState([]); //trying out the map function
   const listItems = myList.map((item)=> 
   <div>
-  <Checkbox 
+    <Checkbox 
       edge="start"
       onChange={handleToggle(item)}
       checked={checked.indexOf(item) !== -1}
-      inputProps={{ 'aria-labelledby': myList.id }}
-      
-  />{" "+item} 
+      inputProps={{ 'aria-labelledby': myList.id }} 
+    />{" "+item} 
   <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button>
   </div>
   );
