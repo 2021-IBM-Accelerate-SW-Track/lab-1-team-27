@@ -44,7 +44,7 @@ export default function BasicTextFields() {
   setChecked(newChecked);
   }
 
-  const[myList, setMyList] = useState([""]); //trying out the map function
+  const[myList, setMyList] = useState([]); //trying out the map function
   const listItems = myList.map((item)=> 
   <li>{item} 
   <Checkbox 
