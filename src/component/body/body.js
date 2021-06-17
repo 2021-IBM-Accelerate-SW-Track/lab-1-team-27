@@ -19,15 +19,21 @@ export default function BasicTextFields() {
   const divStyle = {color: 'blue', font: 'Courier New'};  
   const classes = useStyles();
   const [value, setValue] = useState("");
-  
-  
+  function handleDelete(item) {
+    const newList =  myList.filter(value => value != item);
+    console.log(newList); 
+    setMyList(newList);
+  }
   const handleSubmit = (i) => { 
    i.preventDefault()
+   const dateTime = new Date();
+   // 06/17/21-15:32:45:779 
+   const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
+        dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
    if(value){ //I think this is where you can validate duplicate entries 
         console.log(myList)
        
-        setMyList(myList.concat([value]));
-        
+        setMyList(myList.concat([value+ " " + cleanTime]));    
     } 
   }
 
@@ -46,23 +52,21 @@ export default function BasicTextFields() {
 
   const[myList, setMyList] = useState([]); //trying out the map function
   const listItems = myList.map((item)=> 
-  <li>{item} 
+  <div>
   <Checkbox 
-      
-      edge="end"
+      edge="start"
       onChange={handleToggle(item)}
       checked={checked.indexOf(item) !== -1}
       inputProps={{ 'aria-labelledby': myList.id }}
       
-  />
-  </li>
+  />{" "+item} 
+  <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button>
+  </div>
   );
-
-  
 
   return (
     
-    <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <form  noValidate autoComplete="off" onSubmit={handleSubmit}>
      <TextField 
       value = {value}
       id="outlined-basic"
@@ -78,7 +82,7 @@ export default function BasicTextFields() {
         size = "large"
         >Add Item</Button>
 
-      <div style = {divStyle}>{listItems} 
+      <div >{listItems} 
       </div>  
       
     </form>
