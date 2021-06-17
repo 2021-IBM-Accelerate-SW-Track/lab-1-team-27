@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BasicTextFields() {
   
-  const[myList, setMyList] = useState(['apple', 'banana']); //trying out the map function
+  const[myList, setMyList] = useState([]); //trying out the map function
   const listItems = myList.map((item)=> 
   <li>{item} <button type="button" onClick={function(){handleDelete(item)}}>Delete</button></li>
   );
