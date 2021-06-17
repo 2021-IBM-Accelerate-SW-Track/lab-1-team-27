@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
-
+/*
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -13,14 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-
+*/
 export default function BasicTextFields() {
   
-  const divStyle = {color: 'blue', font: 'Courier New'};  
-  const classes = useStyles();
+  //const divStyle = {color: 'blue', font: 'Courier New'};  
+  //const classes = useStyles();
   const [value, setValue] = useState("");
   function handleDelete(item) {
-    const newList =  myList.filter(value => value != item);
+    const newList =  myList.filter(value => value !== item);
     console.log(newList); 
     setMyList(newList);
   }
