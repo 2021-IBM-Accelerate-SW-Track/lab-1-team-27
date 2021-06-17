@@ -1,16 +1,34 @@
+<<<<<<< HEAD
 //import Header from "./component/header"
 import './App.css';
 //import { Button } from '@material-ui/core';
 /*
+=======
+import Header from "./component/header"
+import Body from "./component/body"
+
+import './App.css';
+
+
+>>>>>>> 7f7763b37e13c81cc7df3fe754786c68d8110c10
 function App() {
+  
+
   return (
     <div className="App">
+     
     <Header/>
+<<<<<<< HEAD
     <Button color="primary">New Task</Button>
+=======
+    <Body/>
+  
+>>>>>>> 7f7763b37e13c81cc7df3fe754786c68d8110c10
     
     </div>
     
   );
+  
 }
 */
 import React from 'react';
