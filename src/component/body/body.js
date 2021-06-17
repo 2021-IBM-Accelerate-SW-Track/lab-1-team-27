@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BasicTextFields() {
 
   const[myList, setMyList] = useState([]); //trying out the map function
-
+  let setS = useState([]);
   const listItems = myList.map((item)=> 
   <li>{item} <button type="button" onClick={handleDelete(item)}>Delete Item</button></li>
   );
@@ -35,8 +35,11 @@ export default function BasicTextFields() {
   const handleSubmit = (i) => { 
    i.preventDefault()
    if(value){ //I think this is where you can validate duplicate entries 
-        setMyList(myList.concat([value]));
+        let x = []
+        x.push.apply(x, myList)
+        setMyList(x);
         console.log("123");
+        console.log(myList)
     }
    
    
