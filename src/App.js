@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-//import Header from "./component/header"
-import './App.css';
-//import { Button } from '@material-ui/core';
-/*
-=======
 import Header from "./component/header"
 import Body from "./component/body"
 
 import './App.css';
 
 
->>>>>>> 7f7763b37e13c81cc7df3fe754786c68d8110c10
 function App() {
   
 
@@ -18,19 +11,16 @@ function App() {
     <div className="App">
      
     <Header/>
-<<<<<<< HEAD
-    <Button color="primary">New Task</Button>
-=======
     <Body/>
   
->>>>>>> 7f7763b37e13c81cc7df3fe754786c68d8110c10
     
     </div>
     
   );
   
 }
-*/
+export default App;
+/*
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -50,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function list() {
-  /*
+  
   const classes = useStyles();
   const [checked, setChecked] = React.useState([1]);
 
@@ -63,7 +53,7 @@ export default function list() {
     } else {
       newChecked.splice(currentIndex, 1);
     }
-    */
+    
     var f = parseInt(document.getElementsByName('input1')[0].value);
     document.getElementsByName('display')[0].value= f;
     var TaskList=new Array();
@@ -110,3 +100,4 @@ export default function list() {
     </List>
   );
 }
+*/
