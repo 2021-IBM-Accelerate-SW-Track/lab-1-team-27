@@ -39,7 +39,7 @@ export default function BasicTextFields() {
         x.push.apply(x, myList)
         setMyList(x);
         console.log("123");
-        console.log(myList)
+        console.log(x)
     }
    
    
