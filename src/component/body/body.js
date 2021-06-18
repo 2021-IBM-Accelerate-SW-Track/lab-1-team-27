@@ -7,7 +7,17 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function BasicTextFields() {
   
+<<<<<<< HEAD
   const [index, setIndex] = useState();
+=======
+  const[myList, setMyList] = useState([]); //trying out the map function
+  const listItems = myList.map((item)=> 
+  <li>{item} <button type="button" onClick={function(){handleDelete(item)}}>Delete</button></li>
+  );
+
+  const divStyle = {color: 'blue', font: 'Courier New'};  
+  const classes = useStyles();
+>>>>>>> 4bb8b5ab9eb6f8fc9c2b4c2a67fcc5e62bff2ba9
   const [value, setValue] = useState("");
   function handleDelete(item) {
     const newList =  myList.filter(value => value !== item);
