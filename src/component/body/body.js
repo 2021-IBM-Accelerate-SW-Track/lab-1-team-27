@@ -8,44 +8,50 @@ import Checkbox from '@material-ui/core/Checkbox';
 export default function BasicTextFields() {
   
   const [value, setValue] = useState("");
+  const [listEdit, setListEdit] = useState([]);
+  const [dupList, setDupList] = useState([]);
+
   function handleDelete(item) {
     const newList =  myList.filter(value => value !== item);
-    console.log(newList); 
+  //  const newerList = dupList.filter(value => value !== item);
     setMyList(newList);
+//    setDupList(newerList);
   }
-  const [listEdit, setListEdit] = useState([]);
-  const [valueEdit, setValueEdit] = useState([]);
 
   function handleEdit(item) {
-   // setListEdit(listEdit.concat([item]));
    setListEdit(item)
   }
+  
   function handleUpdate(item){
     const dateTime = new Date();
     const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
     dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
-    let i = myList.indexOf(item)
-    console.log(i)
-    let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
-    console.log(inputItem)
     const changedList = myList
+
+    let i = myList.indexOf(item)
+    let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
+
     changedList.splice(i, 1, inputItem);
-    console.log(changedList);
     setMyList(changedList);
-    setListEdit([]);
-      
+    setListEdit([]);   
   }
 
-  
   const handleSubmit = (i) => { 
    i.preventDefault()
    const dateTime = new Date();
-   // 06/17/21-15:32:45:779 
+   
    const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
         dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
-   if(value){ //I think this is where you can validate duplicate entries 
-        console.log(myList)
-        setMyList(myList.concat([value+ " " + cleanTime]));    
+   if(value){ 
+        setMyList(myList.concat([value+ " " + cleanTime]));   
+        setDupList(dupList.concat([value])); 
+        for(let j = 0; j < dupList.length; j++){
+            if(dupList[j] === value){
+              alert("one or more of your todos are the same!");
+              handleDelete(j);
+            } 
+            
+        }
     } 
   }
 
@@ -60,11 +66,11 @@ export default function BasicTextFields() {
   } else {
     newChecked.splice(currentIndex, 1);
   }
-  setChecked(newChecked);
+    setChecked(newChecked);
   }
   
-  const[myList, setMyList] = useState([]); //trying out the map function
-  const listItems = myList.map((item)=> 
+  const[myList, setMyList] = useState([]); 
+  const listItems = myList.map((item)=> //using map function to print the list
   <div>
     <Checkbox 
       edge="start"
