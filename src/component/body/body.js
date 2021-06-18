@@ -13,9 +13,9 @@ export default function BasicTextFields() {
 
   function handleDelete(item) {
     const newList =  myList.filter(value => value !== item);
-  //  const newerList = dupList.filter(value => value !== item);
+    const secList = dupList.filter(value => value !== item);
     setMyList(newList);
-//    setDupList(newerList);
+    setDupList(secList);
   }
 
   function handleEdit(item) {
@@ -27,12 +27,16 @@ export default function BasicTextFields() {
     const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
     dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
     const changedList = myList
+    const changedDup = dupList
 
     let i = myList.indexOf(item)
+    let textInput = document.getElementById('update_input').value 
     let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
 
     changedList.splice(i, 1, inputItem);
+    changedDup.splice(i, 1, textInput)
     setMyList(changedList);
+    setDupList(changedDup)
     setListEdit([]);   
   }
 
@@ -48,7 +52,7 @@ export default function BasicTextFields() {
         for(let j = 0; j < dupList.length; j++){
             if(dupList[j] === value){
               alert("one or more of your todos are the same!");
-              handleDelete(j);
+              handleDelete(dupList[j]);
             } 
             
         }
