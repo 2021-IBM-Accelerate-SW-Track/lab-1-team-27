@@ -7,17 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function BasicTextFields() {
   
-<<<<<<< HEAD
   const [index, setIndex] = useState();
-=======
-  const[myList, setMyList] = useState([]); //trying out the map function
-  const listItems = myList.map((item)=> 
-  <li>{item} <button type="button" onClick={function(){handleDelete(item)}}>Delete</button></li>
-  );
-
-  const divStyle = {color: 'blue', font: 'Courier New'};  
-  const classes = useStyles();
->>>>>>> 4bb8b5ab9eb6f8fc9c2b4c2a67fcc5e62bff2ba9
   const [value, setValue] = useState("");
   function handleDelete(item) {
     const newList =  myList.filter(value => value !== item);
@@ -42,7 +32,7 @@ export default function BasicTextFields() {
       changedList.splice(i, 1, inputItem);
       console.log(changedList);
       setMyList(changedList);
-      //console.log(myList);
+      
   }
 
   function getIndex(item){
@@ -73,7 +63,7 @@ export default function BasicTextFields() {
   }
   setChecked(newChecked);
   }
-
+  
   const[myList, setMyList] = useState([]); //trying out the map function
   const listItems = myList.map((item)=> 
   <div>
@@ -84,7 +74,7 @@ export default function BasicTextFields() {
       inputProps={{ 'aria-labelledby': myList.id }} 
     /> {listEdit === item ? ( <input type="text" id = "update_input"/> ):(<div>{item}</div>)}
     {/*{" "+item} */}
-  <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button><button type ="button" onClick={function(){handleEdit(item)}}>Edit</button><button type = "button" onClick={function(){handleUpdate(item)}}>update</button>
+  <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button><button type ="button" onClick={function(){handleEdit(item)}}>Edit</button><button type = "button" onClick={function(){handleUpdate(item)}}>Update</button>
   </div>
   );
 
