@@ -7,7 +7,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function BasicTextFields() {
   
-  const [index, setIndex] = useState();
   const [value, setValue] = useState("");
   function handleDelete(item) {
     const newList =  myList.filter(value => value !== item);
@@ -18,26 +17,26 @@ export default function BasicTextFields() {
   const [valueEdit, setValueEdit] = useState([]);
 
   function handleEdit(item) {
-    //console.log(item.key)
-    
-    //console.log(getIndex(item))
-   // valueEdit[index] = 
-    setListEdit(item)
+   // setListEdit(listEdit.concat([item]));
+   setListEdit(item)
   }
   function handleUpdate(item){
-      let i = myList.indexOf(item)
-      let inputItem = document.getElementById('update_input').value
-      console.log(inputItem)
-      const changedList = myList
-      changedList.splice(i, 1, inputItem);
-      console.log(changedList);
-      setMyList(changedList);
+    const dateTime = new Date();
+    const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
+    dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
+    let i = myList.indexOf(item)
+    console.log(i)
+    let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
+    console.log(inputItem)
+    const changedList = myList
+    changedList.splice(i, 1, inputItem);
+    console.log(changedList);
+    setMyList(changedList);
+    setListEdit([]);
       
   }
 
-  function getIndex(item){
-      return myList.findIndex(x => x.value === item.value);
-  }
+  
   const handleSubmit = (i) => { 
    i.preventDefault()
    const dateTime = new Date();
