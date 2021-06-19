@@ -54,11 +54,27 @@ export default function BasicTextFields() {
    // 06/17/21-15:32:45:779 
    const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
         dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
+<<<<<<< Updated upstream
    //if(value){ //I think this is where you can validate duplicate entries 
      //   console.log(myList)
         setMyList(myList.concat([value+ " " + cleanTime]));    
     //} 
 
+=======
+   if(value){ 
+        setMyList(myList.concat([value+ " " + cleanTime]));   
+        setDupList(dupList.concat([value])); 
+        for(let j = 0; j < dupList.length; j++){
+            if(dupList[j] === value){
+              alert("one or more of your todos are the same!");
+              handleDelete(dupList[j]);
+              handleDelete(myList[i]);
+             // handleDelete(myList[j]);
+            } 
+            
+        }
+    } 
+>>>>>>> Stashed changes
   }
 
 
