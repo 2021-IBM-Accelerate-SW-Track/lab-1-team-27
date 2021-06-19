@@ -13,8 +13,9 @@ export default function BasicTextFields() {
 
   function handleDelete(item) {
     let listIndex = listItems.indexOf(item)
-    const newList =  myList.filter(value => value !== item);
-    const secList = dupList.splice(listIndex, 1);
+    const newList =  myList.filter(value => value !== item); //delete the item with the same value
+    const secList = dupList
+    secList.splice(listIndex, 1); //delete element of the same index as the value
     setMyList(newList);
     setDupList(secList);
   }
@@ -31,19 +32,20 @@ export default function BasicTextFields() {
     const changedDup = dupList
 
     let i = myList.indexOf(item)
-    let textInput = document.getElementById('update_input').value 
-    let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
+    let textInput = document.getElementById('update_input').value //get the input from the text box
+    let inputItem = (document.getElementById('update_input').value + " " + cleanTime) //input with date and time
 
-   /* for(let k = 0; k < dupList.length; k++){
+    for(let k = 0; k < dupList.length; k++){  //checking for duplicated when updating
         if(dupList[k] === textInput){
-          alert("one or more of your todos are the same!");
+          alert("one or more of your todos are the same!"); //alert if there are duplicates
+          return;
         }      
-    }*/
-    changedList.splice(i, 1, inputItem);
-    changedDup.splice(i, 1, textInput)
-    setMyList(changedList);
+    }
+    changedList.splice(i, 1, inputItem); //edit the element in list
+    changedDup.splice(i, 1, textInput) //edit the element in the duplicate check list
+    setMyList(changedList); 
     setDupList(changedDup)
-    setListEdit([]); 
+    setListEdit([]); //update the listEdit state
   }
 
   const handleSubmit = (i) => { 
