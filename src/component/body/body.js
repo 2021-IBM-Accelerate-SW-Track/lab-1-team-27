@@ -103,14 +103,15 @@ export default function BasicTextFields() {
       label="Add To-do Item"
       variant="outlined"
       onChange={(i) => setValue(i.target.value)}
-      
-      rowsMax={2}/>
+      data-testid="new-item-input"
+      />
       
       
       <Button
         type="submit"
         variant="outlined"
         size = "large"
+        data-testid="new-item-button"
         >Add Item</Button>
 
       <div >{listItems} 
