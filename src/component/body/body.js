@@ -55,11 +55,11 @@ export default function BasicTextFields() {
    const cleanTime = "Time Added: " + dateTime.getMonth() + "/" + dateTime.getDate() + "/" + dateTime.getFullYear() + "-" + 
         dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds()+ ":"+ dateTime.getMilliseconds();
    if(value){ 
-        setMyList(myList.concat([value+ " " + cleanTime]));   
+        setMyList(myList.concat([value+ " " + cleanTime]));   //adds time and date for the item
         setDupList(dupList.concat([value])); 
         for(let j = 0; j < dupList.length; j++){
             if(dupList[j] === value){
-              alert("one or more of your todos are the same!");
+              alert("one or more of your todos are the same!"); //alert for duplicate items
               handleDelete(dupList[j]);
             } 
             
@@ -90,8 +90,7 @@ export default function BasicTextFields() {
       checked={checked.indexOf(item) !== -1}
       inputProps={{ 'aria-labelledby': myList.id }} 
     /> {listEdit === item ? ( <input type="text" id = "update_input"/> ):(<div>{item}</div>)}
-    {/*{" "+item} */}
-  <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button><button type ="button" onClick={function(){handleEdit(item)}}>Edit</button><button type = "button" onClick={function(){handleUpdate(item)}}>Update</button>
+    <br/><button type="button" onClick={function(){handleDelete(item)}}>Delete</button><button type ="button" onClick={function(){handleEdit(item)}}>Edit</button><button type = "button" onClick={function(){handleUpdate(item)}}>Update</button>
   </div>
   );
 
@@ -104,7 +103,7 @@ export default function BasicTextFields() {
       label="Add To-do Item"
       variant="outlined"
       onChange={(i) => setValue(i.target.value)}
-      multiline
+      
       rowsMax={2}/>
       
       
