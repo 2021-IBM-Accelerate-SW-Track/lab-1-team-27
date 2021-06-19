@@ -12,8 +12,9 @@ export default function BasicTextFields() {
   const [dupList, setDupList] = useState([]);
 
   function handleDelete(item) {
+    let listIndex = listItems.indexOf(item)
     const newList =  myList.filter(value => value !== item);
-    const secList = dupList.filter(value => value !== item);
+    const secList = dupList.splice(listIndex, 1);
     setMyList(newList);
     setDupList(secList);
   }
@@ -33,11 +34,16 @@ export default function BasicTextFields() {
     let textInput = document.getElementById('update_input').value 
     let inputItem = (document.getElementById('update_input').value + " " + cleanTime)
 
+   /* for(let k = 0; k < dupList.length; k++){
+        if(dupList[k] === textInput){
+          alert("one or more of your todos are the same!");
+        }      
+    }*/
     changedList.splice(i, 1, inputItem);
     changedDup.splice(i, 1, textInput)
     setMyList(changedList);
     setDupList(changedDup)
-    setListEdit([]);   
+    setListEdit([]); 
   }
 
   const handleSubmit = (i) => { 
